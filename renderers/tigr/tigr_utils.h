@@ -1,4 +1,7 @@
-#pragma once
+#ifndef __TIGR_UTILS_H__
+#define __TIGR_UTILS_H__
+
+#include <math.h>
 
 #include "tigr.h"
 
@@ -21,3 +24,8 @@ void tigrArcRect(Tigr* ctx, int x, int y, int w, int h, int r, TPixel col);
  * This is the filled one
  */
 void tigrFillArcRect(Tigr* ctx, int x, int y, int w, int h, int r, TPixel col);
+
+/* ChatGPT generated blitScale function */
+void tigrBlitScale(Tigr* dst, Tigr* src, int dx, int dy, int sx, int sy, int sw, int sh, int dw, int dh);
+
+#endif /* __TIGR_UTILS_H__ */

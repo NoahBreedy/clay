@@ -1,6 +1,4 @@
-#include <math.h>
-
-#include "utils.h"
+#include "tigr_utils.h"
 
 enum ARC_STATES {
     NOT_DRAWN,
@@ -172,6 +170,39 @@ void tigrFillArcRect(Tigr* ctx, int x, int y, int w, int h, int r, TPixel col) {
 
 }
 
+/* ChatGPT generated blitScale function */
+void tigrBlitScale(Tigr* dst, Tigr* src, int dx, int dy, int sx, int sy, int sw, int sh, int dw, int dh) {
+    for(int y = 0; y < dh; y++)
+    {
+        int srcY = sy + (y * sh) / dh;
 
+        if(srcY < 0 || srcY >= src->h)
+            continue;
 
+        int dstY = dy + y;
 
+        if(dstY < 0 || dstY >= dst->h)
+            continue;
+
+        for(int x = 0; x < dw; x++)
+        {
+            int srcX = sx + (x * sw) / dw;
+
+            if(srcX < 0 || srcX >= src->w)
+                continue;
+
+            int dstX = dx + x;
+
+            if(dstX < 0 || dstX >= dst->w)
+                continue;
+
+            TPixel p = src->pix[srcY * src->w + srcX];
+
+            /* Skip transparent pixels */
+            if(p.a == 0)
+                continue;
+
+            tigrPlot(dst, dstX, dstY, p);
+        }
+    }
+}
