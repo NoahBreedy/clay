@@ -60,8 +60,8 @@ static inline Clay_Dimensions Clay_Tigr_MeasureText(Clay_StringSlice str, Clay_T
 
     char* cstr = Clay_to_Cstr(&toTerminate);
 
-    int text_width  = tigrTextWidth(tfont, cstr);
-    int text_height = tigrTextHeight(tfont, cstr);
+    int text_width  = tigrTextWidth(tfont, cstr)  * (config->fontSize/8);
+    int text_height = tigrTextHeight(tfont, cstr) * (config->fontSize/8);
 
     free(cstr);
 
